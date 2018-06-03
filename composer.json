@@ -1,0 +1,24 @@
+{
+    "name": "reyesoft/ci",
+    "keywords": [
+        "reyesoft",
+        "ci"
+    ],
+    "type": "library",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Pablo Reyes",
+            "email": "pablo@reyesoft.com",
+            "homepage": "https://pabloreyes.com.ar/"
+        }
+    ],
+    "config": {
+        "preferred-install": "dist",
+        "platform:": {
+            "php": "7.1"
+        },
+        "discard-changes": true
+    },
+    "prefer-stable": true
+}
