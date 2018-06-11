@@ -1,12 +1,10 @@
 # Add to composer.json
-# {
-#     "name": "My cool Reyesoft project"
-#     "sasslintConfig": "node_modules/js/rules/.sass.lint.yml"
-# }
+#   "sasslintConfig": "resources/.sass-lint.yml"
 
 options:
-  config-file: node_modules/js/rules/.sass.lint.yml
-files:
-  include: 'src/**/*.s+(a|c)ss'
-rules:
-  # Project particular extends
+  # warning! relative path to this file
+  config-file: ../node_modules/reyesoft-ci/js/rules/.sass-lint.yml
+  files:
+    include: 'src/**/*.s+(a|c)ss'
+    rules:
+      # Project particular extends
