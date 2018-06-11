@@ -1,5 +1,6 @@
 {
     "name": "reyesoft-ci",
+    "version": "0.0.2",
     "description": "Reyesoft Continuous Integration",
     "scripts": {
     },
