@@ -69,28 +69,28 @@ rules:
   indentation:
     - 1
     - size: 4
-    leading-zero: 2
-    max-line-length: 0
-    max-file-line-count: 2
-    nesting-depth: 0
-    property-sort-order: 0
-    pseudo-element: 0
-    quotes: 2
-    shorthand-values: 0
-    url-quotes: 0
-    variable-for-property: 0
-    zero-unit: 2
+  leading-zero: 2
+  max-line-length: 0
+  max-file-line-count: 2
+  nesting-depth: 0
+  property-sort-order: 0
+  pseudo-element: 0
+  quotes: 2
+  shorthand-values: 0
+  url-quotes: 0
+  variable-for-property: 0
+  zero-unit: 2
 
-    # Inner Spacing
-    space-after-comma: 2
-    space-before-colon: 0
-    space-after-colon: 2
-    space-before-brace: 2
-    space-before-bang: 2
-    space-after-bang: 0
-    space-between-parens: 0
-    space-around-operator: 2
+  # Inner Spacing
+  space-after-comma: 2
+  space-before-colon: 0
+  space-after-colon: 2
+  space-before-brace: 2
+  space-before-bang: 2
+  space-after-bang: 0
+  space-between-parens: 0
+  space-around-operator: 2
 
-    # Final Items
-    trailing-semicolon: 2
-    final-newline: 2
+  # Final Items
+  trailing-semicolon: 2
+  final-newline: 2
