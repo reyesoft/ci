@@ -1,6 +1,3 @@
-# Add to composer.json
-#   "sasslintConfig": "resources/.sass-lint.yml"
-
 options:
   # warning! relative path to this file
   config-file: ../node_modules/reyesoft-ci/js/rules/.sass-lint.yml
