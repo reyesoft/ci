@@ -17,7 +17,6 @@
         "prefer-template": false,
         "no-any": false,
         "max-classes-per-file": false,
-        "linebreak-style": ["error", "windows"],
         "no-unsafe-any": false,
         "completed-docs": false,
         "forin": false,
@@ -125,7 +124,7 @@
         "whitespace": [
             true,
             "check-branch",
-            "check-decl",
+            // "check-decl", // no compatibility with prettier
             "check-operator",
             "check-module",
             "check-separator",
