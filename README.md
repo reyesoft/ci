@@ -40,7 +40,7 @@ composer requiere-dev reyesoft/ci
             "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
             "git add yarn.lock"
         ]
-    },
+    }
 }
 ```
 
