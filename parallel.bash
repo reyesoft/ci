@@ -24,7 +24,6 @@ DIR=`dirname "$(readlink -f "$0")"`
 source ${DIR}/lib/runners.bash
 
 if [ "${stop}" ] ; then
-    echo stop
     parallel_and_stop "$@"
     RC=$?
 
