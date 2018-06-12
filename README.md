@@ -21,30 +21,19 @@ composer requiere-dev reyesoft/ci
 {
     "sasslintConfig": "resources/.sass-lint.yml",
     "scripts": {
-        "lint": "sass-lint -c -q",
-        "prettier": "yarn prettier-ts && yarn prettier-md && yarn prettier-scss",
-        "prettier-ts": "yarn prettier-ts:show --write",
-        "prettier-ts:show": "prettier --single-quote true \"src/**/*.ts\"",
-        "prettier-json": "yarn prettier-json:show --write",
-        "prettier-json:show": "prettier --parser json --single-quote es5 \"**/*.json\"",
-        "prettier-md": "yarn prettier-md:show --write",
-        "prettier-md:show": "prettier --parser markdown \"**/*.md\"",
-        "prettier-scss": "yarn prettier-scss:show --write",
-        "prettier-scss:show": "prettier --parser scss --single-quote es5 \"**/*.scss\"",
+        "lint": "ng lint && sass-lint -c -q",
+        "fix": "ng lint --fix && yarn prettier:fix",
+        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
         "precommit": "lint-staged",
     },
     "lint-staged": {
         "*.ts": [
-            "yarn prettier-ts",
-            "yarn lint --fix",
+            "yarn tslint --fix",
             "git add"
         ],
-        "*.md": [
-            "yarn prettier-md",
-            "git add"
-        ],
-        "*.scss": [
-            "yarn prettier-scss",
+        "*.{ts,md,scss,sass}": [
+            "yarn prettier:fix",
             "git add"
         ],
         "package.json": [
@@ -54,3 +43,5 @@ composer requiere-dev reyesoft/ci
     }
 }
 ```
+
+`yarn fix` for various projects: `ng lint project1 --fix && ng lint project2 --fix && yarn prettier:fix`
