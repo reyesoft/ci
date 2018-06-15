@@ -17,6 +17,9 @@ composer requiere-dev reyesoft/ci
 
 ```json
 {
+    "scripts": {
+        "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
+    }
 }
 ```
 
