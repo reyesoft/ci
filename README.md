@@ -5,6 +5,24 @@ yarn add --dev reyesoft-ci
 composer requiere-dev reyesoft/ci
 ```
 
+## Backend
+
+### Tools
+
+* cs-fixer
+
+### Install
+
+`composer.json`
+
+```json
+{
+    "scripts": {
+        "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
+    }
+}
+```
+
 ## Front End
 
 ### Tools
