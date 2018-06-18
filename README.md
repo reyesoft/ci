@@ -19,6 +19,12 @@ composer requiere-dev reyesoft/ci
 {
     "scripts": {
         "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
+        "phpstan": [
+            "@phpstan-src",
+            "@phpstan-tests"
+        ],
+        "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/ci/.phpstan.src.neon app ./bootstrap/*.php config",
+        "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/ci/.phpstan.tests.neon tests"
     }
 }
 ```
@@ -43,7 +49,7 @@ composer requiere-dev reyesoft/ci
         "fix": "ng lint --fix && yarn prettier:fix",
         "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
         "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
-        "precommit": "lint-staged",
+        "precommit": "lint-staged"
     },
     "lint-staged": {
         "*.ts": [
