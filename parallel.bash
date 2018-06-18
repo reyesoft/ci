@@ -19,6 +19,9 @@ while getopts ":s" o; do
 done
 shift $((OPTIND-1))
 
+## fix problem when parallel.bash runs inside a composer script
+sleep .1 &
+
 ## includes
 DIR=`dirname "$(readlink -f "$0")"`
 source ${DIR}/lib/runners.bash
