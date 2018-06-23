@@ -18,13 +18,22 @@ composer requiere-dev reyesoft/ci
 ```json
 {
     "scripts": {
+        "ci-double-spaces": [
+            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh app",
+            "sh vendor/reyesoft/ci/tools/find-double-spaces.sh tests"
+        ],
         "ci-php-cs-fixer": "sh vendor/reyesoft/ci/php/scripts/php-cs-fixer.sh",
         "phpstan": [
             "@phpstan-src",
             "@phpstan-tests"
         ],
-        "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/ci/.phpstan.src.neon app ./bootstrap/*.php config",
-        "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/ci/.phpstan.tests.neon tests"
+        "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.src.neon app ./bootstrap/*.php config",
+        "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.tests.neon tests",
+        "coverage": [
+            "ulimit -Sn 50000",
+            "phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit",
+            "php ./vendor/reyesoft/ci/tools/coverage-checker.php ./bootstrap/cache/clover.xml 46"
+        ]
     }
 }
 ```

@@ -29,7 +29,7 @@ foreach ($metrics as $metric) {
     $checkedElements += (int) $metric['coveredelements'];
 }
 
-$coverage = ($checkedElements / $totalElements) * 100;
+$coverage = intval($checkedElements / $totalElements * 10000) / 100;
 
 echo PHP_EOL .
     ' 👉  Check file://' . getcwd() . '/bootstrap/cache/reports/coverage/index.html for more information'
