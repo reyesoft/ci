@@ -36,9 +36,14 @@ echo PHP_EOL .
     . PHP_EOL . PHP_EOL;
 
 if ($coverage < $percentage) {
-    echo ' 🚫  ERROR: Code coverage is ' . $coverage . '%, which is below the accepted ' . $percentage . '%'
+    echo "\033[0;30m\033[43m"   // white on yellow
+        . ' ⚠ ERROR: Code coverage is ' . $coverage . '%, which is below the accepted ' . $percentage . '% '
+        . "\033[0m"
         . PHP_EOL . PHP_EOL;
     exit(1);
 }
 
-echo ' ✓  Code coverage is ' . $coverage . '% 👌' . PHP_EOL . PHP_EOL;
+echo "\033[0;32m" // green
+    . ' ✓  Code coverage is ' . $coverage . '% 👌'
+    . "\033[0m"
+    . PHP_EOL . PHP_EOL;
