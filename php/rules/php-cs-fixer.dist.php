@@ -32,9 +32,7 @@ return PhpCsFixer\Config::create()
         'single_blank_line_before_namespace' => true,
         'random_api_migration' => true,
         'concat_space' => ['spacing' => 'one'],
-        'no_unreachable_default_argument_value' => true,
         'class_definition' => ['singleLine' => true, 'singleItemSingleLine' => true],
-        'no_unreachable_default_argument_value' => true,
         'yoda_style' => false,
         'combine_consecutive_issets' => true,
         'no_homoglyph_names' => true,
@@ -47,7 +45,6 @@ return PhpCsFixer\Config::create()
         'method_chaining_indentation' => true,
         'multiline_whitespace_before_semicolons' => true,
         'no_alternative_syntax' => true,
-        'ordered_imports' => true,
         'php_unit_ordered_covers' => true,
         'php_unit_construct' => true,
         'php_unit_strict' => true,
@@ -78,10 +75,10 @@ return PhpCsFixer\Config::create()
         // 'no_unset_on_property' => true, // Warning: we use unset on StdClass
         // 'php_unit_internal_class' => true,
 
-        // on future?
         'explicit_string_variable' => true, //check classes like $user->first_name
-        // 'strict_comparison' => true,
-        // 'no_useless_else' => true,
+        'strict_comparison' => true,
+        'no_useless_else' => true,
+        'strict_param' => true,
         /*
         'ordered_class_elements' => [
             'use_trait',
