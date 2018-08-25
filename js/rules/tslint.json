@@ -124,7 +124,6 @@
         "whitespace": [
             true,
             "check-branch",
-            // "check-decl", // no compatibility with prettier
             "check-operator",
             "check-module",
             "check-separator",
@@ -134,6 +133,7 @@
         "no-implicit-dependencies": false,
         "no-redundant-jsdoc": false,
         "no-unnecessary-class": false,
+        "file-name-casing": [true, "kebab-case"],
 
         "newline-per-chained-call": false,
         "prefer-readonly": false,

@@ -79,6 +79,19 @@ return PhpCsFixer\Config::create()
         'strict_comparison' => true,
         'no_useless_else' => true,
         'strict_param' => true,
+
+        // 2.13
+        'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
+        'native_constant_invocation' => false, // PHP_EOL -> \PHP_EOL (added like Symfony:risky)
+        'magic_method_casing' => true,
+        'fopen_flag_order' => true,
+        'combine_nested_dirname' => true,
+        'binary_operator_spaces' => true,
+        'no_alias_functions' => true,
+        'php_unit_method_casing' => true,
+        'implode_call' => true,
+        'no_unreachable_default_argument_value' => true,
+
         /*
         'ordered_class_elements' => [
             'use_trait',
