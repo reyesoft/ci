@@ -2,7 +2,7 @@
 
 ```bash
 yarn add --dev reyesoft-ci
-composer requiere-dev reyesoft/ci
+composer require-dev reyesoft/ci
 ```
 
 ## Backend
