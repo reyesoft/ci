@@ -30,8 +30,7 @@ composer require-dev reyesoft/ci
         "phpstan-src": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.src.neon app ./bootstrap/*.php config",
         "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.tests.neon tests",
         "coverage": [
-            "ulimit -Sn 50000",
-            "phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit",
+            "ulimit -Sn 50000 && phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit",
             "php ./vendor/reyesoft/ci/tools/coverage-checker.php ./bootstrap/cache/clover.xml 46"
         ]
     }
