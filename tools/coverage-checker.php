@@ -20,15 +20,15 @@ $config = [
 ];
 
 // LOAD PARAMS FROM PHPUNIT.XML
-$xml = simplexml_load_string(file_get_contents('phpunit.xml')) or die("Error reading phpunit.xml");
-foreach ($xml->coverage->thresholds->threshold ?? [] as $threshold) {
-    $value = (string) $threshold;
-    $config['thresholds'][$value]['lines'] = (string) $threshold->attributes()->lines;
-    $config['thresholds'][$value]['functions'] = (string) $threshold->attributes()->functions;
+$xml = json_decode(file_get_contents('composer.json')) or die("Error reading phpunit.xml");
+//var_dump($xml->extra->coverage->thresholds);exit;
+foreach ($xml->extra->coverage->thresholds ?? [] as $key => $threshold) {
+    @$config['thresholds'][$key]['lines'] = (string) $threshold->lines;
+    @$config['thresholds'][$key]['functions'] = (string) $threshold->functions;
 }
 
 // merge params
-$config['file'] = $argv[1] ?? $xml->coverage->file ?? $config['file'];
+$config['file'] = $argv[1] ?? $xml->extra->coverage->file ?? $config['file'];
 $config['file'] = getcwd() . '/' . $config['file'];
 if (!file_exists($config['file'])) {
     throw new InvalidArgumentException('Invalid input file provided (' . $config['file'] . ')');
@@ -38,7 +38,6 @@ $config['thresholds']['global']['lines'] = $argv[2] ?? $config['thresholds']['gl
 if (!$config['thresholds']['global']['lines']) {
     throw new InvalidArgumentException('An integer checked percentage must be given as second parameter');
 }
-
 
 // READ CLOVER FILE
 $xml = new SimpleXMLElement(file_get_contents($config['file']));

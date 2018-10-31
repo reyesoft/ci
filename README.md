@@ -31,8 +31,21 @@ composer require-dev reyesoft/ci
         "phpstan-tests": "./vendor/bin/phpstan analyse -l 7 -c resources/rules/phpstan.tests.neon tests",
         "coverage": [
             "ulimit -Sn 50000 && phpdbg -d memory_limit=-1 -qrr ./vendor/bin/phpunit",
-            "php ./vendor/reyesoft/ci/tools/coverage-checker.php ./bootstrap/cache/clover.xml 46"
+            "php ./vendor/reyesoft/ci/tools/coverage-checker.php"
         ]
+    },
+    "extra": {
+        "coverage": {
+            "file": "./bootstrap/cache/clover.xml",
+            "thresholds": {
+                "global": {
+                    "lines": 46
+                },
+                "/app/Boxer": {
+                    "lines": 78
+                }
+            }
+        }
     }
 }
 ```

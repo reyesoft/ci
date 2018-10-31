@@ -23,13 +23,6 @@
             <directory suffix=".php">./src</directory>
         </whitelist>
     </filter>
-    <coverage>
-        <file>./tests/Tools/coverage-checker-files/clover.xml</file>
-        <thresholds>
-            <threshold lines="55">global</threshold>
-            <threshold lines="78">/app/Boxer</threshold>
-        </thresholds>
-    </coverage>
     <php>
         <!-- los mismos que .env.testing -->
         <env name="DB_CONNECTION" value="testing"/>
