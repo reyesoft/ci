@@ -26,6 +26,19 @@
     "suggest": {
         "weebly/phpstan-laravel": "^1.1"
     },
+    "extra": {
+        "coverage": {
+            "file": "./tests/Tools/coverage-checker-files/clover.xml",
+            "thresholds": {
+                "global": {
+                    "lines": 55
+                },
+                "/app/Boxer": {
+                    "lines": 78
+                }
+            }
+        }
+    },
     "config": {
         "preferred-install": "dist",
         "platform:": {
