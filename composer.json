@@ -20,6 +20,9 @@
         "phpstan/phpstan-strict-rules": "^0.9",
         "phpstan/phpstan-phpunit": "^0.9"
     },
+    "require-dev": {
+        "phpunit/phpunit": "^7"
+    },
     "suggest": {
         "weebly/phpstan-laravel": "^1.1"
     },

@@ -8,42 +8,88 @@
 
 declare(strict_types=1);
 
-$inputFile = getcwd() . '/' . $argv[1];
-$percentage = min(100, max(0, (int) $argv[2]));
+$config = [
+    'file' => 'clover.xml',
+    'thresholds' => [
+        'global' => [
+            'lines' => 100,
+            '_elements' => 0,
+            '_covered' => 0
+        ]
+    ]
+];
 
-if (!file_exists($inputFile)) {
-    throw new InvalidArgumentException('Invalid input file provided (' . $inputFile . ')');
+// LOAD PARAMS FROM PHPUNIT.XML
+$xml = simplexml_load_string(file_get_contents('phpunit.xml')) or die("Error reading phpunit.xml");
+foreach ($xml->coverage->thresholds->threshold ?? [] as $threshold) {
+    $value = (string) $threshold;
+    $config['thresholds'][$value]['lines'] = (string) $threshold->attributes()->lines;
+    $config['thresholds'][$value]['functions'] = (string) $threshold->attributes()->functions;
 }
 
-if (!$percentage) {
+// merge params
+$config['file'] = $argv[1] ?? $xml->coverage->file ?? $config['file'];
+$config['file'] = getcwd() . '/' . $config['file'];
+if (!file_exists($config['file'])) {
+    throw new InvalidArgumentException('Invalid input file provided (' . $config['file'] . ')');
+}
+
+$config['thresholds']['global']['lines'] = $argv[2] ?? $config['thresholds']['global']['lines'];
+if (!$config['thresholds']['global']['lines']) {
     throw new InvalidArgumentException('An integer checked percentage must be given as second parameter');
 }
 
-$xml = new SimpleXMLElement(file_get_contents($inputFile));
-$metrics = $xml->xpath('//metrics');
-$totalElements = 0;
-$checkedElements = 0;
 
-foreach ($metrics as $metric) {
-    $totalElements += (int) $metric['elements'];
-    $checkedElements += (int) $metric['coveredelements'];
+// READ CLOVER FILE
+$xml = new SimpleXMLElement(file_get_contents($config['file']));
+$files = $xml->xpath('//file');
+foreach ($files as $file) {
+    $filename = (string)$file->attributes()->name;
+
+    $elements = (int) $file->metrics->attributes()->elements;
+    $covered = (int) $file->metrics->attributes()->coveredelements;
+
+    foreach ($config['thresholds'] as $filepattern => $values) {
+        if (strpos($filename, getcwd().$filepattern) === 0 || strpos($filename, $filepattern) === 0) {
+            @$config['thresholds'][$filepattern]['_elements'] += $elements;
+            @$config['thresholds'][$filepattern]['_covered'] += $covered;
+        }
+    }
+
+    $config['thresholds']['global']['_elements'] += $elements;
+    $config['thresholds']['global']['_covered'] += $covered;
 }
-
-$coverage = intval($checkedElements / $totalElements * 10000) / 100;
 
 echo PHP_EOL .
     ' 👉  Check file://' . getcwd() . '/bootstrap/cache/reports/coverage/index.html for more information'
     . PHP_EOL . PHP_EOL;
 
-if ($coverage < $percentage) {
-    echo "\033[0;30m\033[43m"   // white on yellow
-        . ' ⚠ ERROR: Code coverage is ' . $coverage . '%, which is below the accepted ' . $percentage . '% '
+
+$error = false;
+foreach ($config['thresholds'] as $filepattern => $values) {
+    $config['thresholds'][$filepattern]['_percentage'] = intval(
+            intval($config['thresholds'][$filepattern]['_covered'] ?? 0)
+            / intval($config['thresholds'][$filepattern]['_elements'] ?? 1)
+            * 10000) / 100;
+    if ($config['thresholds'][$filepattern]['_percentage'] < $config['thresholds'][$filepattern]['lines']) {
+        echo 'FAIL: '.$filepattern.' coverage '.$config['thresholds'][$filepattern]['_percentage']
+            . '; ' .$config['thresholds'][$filepattern]['lines'].' required.'. PHP_EOL;
+        $error = true;
+    }
+}
+
+$coverage = intval($config['thresholds']['global']['_covered'] / $config['thresholds']['global']['_elements'] * 10000) / 100;
+
+if ($error || $coverage < $config['thresholds']['global']['lines']) {
+    echo PHP_EOL
+        . "\033[0;30m\033[43m"   // white on yellow
+        . ' ⚠ ERROR: Global code coverage is ' . $coverage . '%, which is below the accepted ' . $config['thresholds']['global']['lines'] . '% '
         . "\033[0m"
         . PHP_EOL . PHP_EOL;
     exit(1);
 }
 
 echo "\033[0;32m" // green
-    . ' ✓  Code coverage is ' . $coverage . '% 👌'
+    . ' ✓  Global code coverage is ' . $coverage . '% 👌'
     . "\033[0m"
     . PHP_EOL . PHP_EOL;
