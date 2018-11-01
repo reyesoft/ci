@@ -13,8 +13,10 @@ $config = [
     'thresholds' => [
         'global' => [
             'lines' => 100,
-            '_elements' => 0,
-            '_covered' => 0
+            '_lines' => 0,
+            '_c_lines' => 0,
+            '_functions' => 0,
+            '_c_functions' => 0
         ]
     ]
 ];
@@ -46,17 +48,25 @@ foreach ($files as $file) {
     $filename = (string)$file->attributes()->name;
 
     $elements = (int) $file->metrics->attributes()->elements;
-    $covered = (int) $file->metrics->attributes()->coveredelements;
+    $c_lines = (int) $file->metrics->attributes()->coveredelements;
+
+    $methods = (int) $file->metrics->attributes()->methods;
+    $c_functions = (int) $file->metrics->attributes()->coveredmethods;
 
     foreach ($config['thresholds'] as $filepattern => $values) {
         if (strpos($filename, getcwd().$filepattern) === 0 || strpos($filename, $filepattern) === 0) {
-            @$config['thresholds'][$filepattern]['_elements'] += $elements;
-            @$config['thresholds'][$filepattern]['_covered'] += $covered;
+            @$config['thresholds'][$filepattern]['_lines'] += $elements;
+            @$config['thresholds'][$filepattern]['_c_lines'] += $c_lines;
+            @$config['thresholds'][$filepattern]['_functions'] += $methods;
+            @$config['thresholds'][$filepattern]['_c_functions'] += $c_functions;
         }
     }
 
-    $config['thresholds']['global']['_elements'] += $elements;
-    $config['thresholds']['global']['_covered'] += $covered;
+    $config['thresholds']['global']['_lines'] += $elements;
+    $config['thresholds']['global']['_c_lines'] += $c_lines;
+
+    $config['thresholds']['global']['_functions'] += $methods;
+    $config['thresholds']['global']['_c_functions'] += $c_functions;
 }
 
 echo PHP_EOL .
@@ -65,19 +75,29 @@ echo PHP_EOL .
 
 
 $error = false;
-foreach ($config['thresholds'] as $filepattern => $values) {
-    $config['thresholds'][$filepattern]['_percentage'] = intval(
-            intval($config['thresholds'][$filepattern]['_covered'] ?? 0)
-            / intval($config['thresholds'][$filepattern]['_elements'] ?? 1)
+function evaluateOrWarn(string $filepattern, string $element): void {
+    global $error, $config;
+    $config['thresholds'][$filepattern]['_'.$element.'_percentage'] = intval(
+            intval($config['thresholds'][$filepattern]['_c_'.$element] ?? 0)
+            / intval($config['thresholds'][$filepattern]['_'.$element] ?? 1)
             * 10000) / 100;
-    if ($config['thresholds'][$filepattern]['_percentage'] < $config['thresholds'][$filepattern]['lines']) {
-        echo 'FAIL: '.$filepattern.' coverage '.$config['thresholds'][$filepattern]['_percentage']
-            . '; ' .$config['thresholds'][$filepattern]['lines'].' required.'. PHP_EOL;
+    if ($config['thresholds'][$filepattern]['_'.$element.'_percentage'] < $config['thresholds'][$filepattern][$element]) {
+        echo 'FAIL: '.$filepattern.' '.$element.' coverage '.$config['thresholds'][$filepattern]['_'.$element.'_percentage']
+            . '; ' .$config['thresholds'][$filepattern][$element].' required.'. PHP_EOL;
         $error = true;
+    }
+    if ($config['thresholds'][$filepattern]['_'.$element.'_percentage'] > $config['thresholds'][$filepattern][$element] * 1.05) {
+        echo 'WARN: '.$filepattern.' '.$element.' coverage '.$config['thresholds'][$filepattern]['_'.$element.'_percentage']
+            . '; ' .$config['thresholds'][$filepattern][$element].' required. You can increase it.'. PHP_EOL;
     }
 }
 
-$coverage = intval($config['thresholds']['global']['_covered'] / $config['thresholds']['global']['_elements'] * 10000) / 100;
+foreach ($config['thresholds'] as $filepattern => $values) {
+    evaluateOrWarn($filepattern, 'lines');
+    evaluateOrWarn($filepattern, 'functions');
+}
+
+$coverage = intval($config['thresholds']['global']['_c_lines'] / $config['thresholds']['global']['_lines'] * 10000) / 100;
 
 if ($error || $coverage < $config['thresholds']['global']['lines']) {
     echo PHP_EOL
