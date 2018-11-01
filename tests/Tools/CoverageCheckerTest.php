@@ -23,7 +23,7 @@ class CoverageCheckerTest extends TestCase
 
     public function testCoverageReportFail(): void
     {
-        $output = `php ./tools/coverage-checker.php ./tests/Tools/coverage-checker-files/clover.xml 100`;
+        $output = `php ./tools/coverage-checker.php ./tests/Tools/coverage-checker-files/clover.xml 99`;
         $this->assertContains('for more information', $output);
         $this->assertContains('which is below the accepted', $output);
     }

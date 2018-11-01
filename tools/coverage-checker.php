@@ -12,11 +12,6 @@ $config = [
     'file' => 'clover.xml',
     'thresholds' => [
         'global' => [
-            'lines' => 100,
-            '_lines' => 0,
-            '_c_lines' => 0,
-            '_functions' => 0,
-            '_c_functions' => 0
         ]
     ]
 ];
@@ -41,6 +36,13 @@ if (!$config['thresholds']['global']['lines']) {
     throw new InvalidArgumentException('An integer checked percentage must be given as second parameter');
 }
 
+foreach ($config['thresholds'] as $filepattern => $values) {
+    $config['thresholds'][$filepattern]['_lines'] =
+    $config['thresholds'][$filepattern]['_c_lines'] =
+    $config['thresholds'][$filepattern]['_functions'] =
+    $config['thresholds'][$filepattern]['_c_functions'] = 0;
+}
+
 // READ CLOVER FILE
 $xml = new SimpleXMLElement(file_get_contents($config['file']));
 $files = $xml->xpath('//file');
@@ -55,16 +57,15 @@ foreach ($files as $file) {
 
     foreach ($config['thresholds'] as $filepattern => $values) {
         if (strpos($filename, getcwd().$filepattern) === 0 || strpos($filename, $filepattern) === 0) {
-            @$config['thresholds'][$filepattern]['_lines'] += $elements;
-            @$config['thresholds'][$filepattern]['_c_lines'] += $c_lines;
-            @$config['thresholds'][$filepattern]['_functions'] += $methods;
-            @$config['thresholds'][$filepattern]['_c_functions'] += $c_functions;
+            $config['thresholds'][$filepattern]['_lines'] += $elements;
+            $config['thresholds'][$filepattern]['_c_lines'] += $c_lines;
+            $config['thresholds'][$filepattern]['_functions'] += $methods;
+            $config['thresholds'][$filepattern]['_c_functions'] += $c_functions;
         }
     }
 
     $config['thresholds']['global']['_lines'] += $elements;
     $config['thresholds']['global']['_c_lines'] += $c_lines;
-
     $config['thresholds']['global']['_functions'] += $methods;
     $config['thresholds']['global']['_c_functions'] += $c_functions;
 }
@@ -81,12 +82,19 @@ function evaluateOrWarn(string $filepattern, string $element): void {
             intval($config['thresholds'][$filepattern]['_c_'.$element] ?? 0)
             / intval($config['thresholds'][$filepattern]['_'.$element] ?? 1)
             * 10000) / 100;
-    if ($config['thresholds'][$filepattern]['_'.$element.'_percentage'] < $config['thresholds'][$filepattern][$element]) {
+    if (
+        $config['thresholds'][$filepattern][$element] &&
+        $config['thresholds'][$filepattern]['_'.$element.'_percentage'] < $config['thresholds'][$filepattern][$element]
+    ) {
         echo 'FAIL: '.$filepattern.' '.$element.' coverage '.$config['thresholds'][$filepattern]['_'.$element.'_percentage']
             . '; ' .$config['thresholds'][$filepattern][$element].' required.'. PHP_EOL;
         $error = true;
     }
-    if ($config['thresholds'][$filepattern]['_'.$element.'_percentage'] > $config['thresholds'][$filepattern][$element] * 1.05) {
+
+    if (
+        $config['thresholds'][$filepattern][$element] &&
+        (float)$config['thresholds'][$filepattern]['_'.$element.'_percentage'] > (float)$config['thresholds'][$filepattern][$element] * 1.05
+    ) {
         echo 'WARN: '.$filepattern.' '.$element.' coverage '.$config['thresholds'][$filepattern]['_'.$element.'_percentage']
             . '; ' .$config['thresholds'][$filepattern][$element].' required. You can increase it.'. PHP_EOL;
     }
