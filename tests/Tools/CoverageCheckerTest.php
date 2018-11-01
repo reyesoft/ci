@@ -34,4 +34,11 @@ class CoverageCheckerTest extends TestCase
         $this->assertContains('for more information', $output);
         $this->assertNotContains('which is below the accepted', $output);
     }
+
+    public function testCoverageReportWarn(): void
+    {
+        $output = `php ./tools/coverage-checker.php`;
+        $this->assertContains('WARN: /app/Boxer functions coverage 75.32; 55 required. You can increase it', $output);
+        $this->assertNotContains('which is below the accepted', $output);
+    }
 }

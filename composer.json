@@ -31,10 +31,12 @@
             "file": "./tests/Tools/coverage-checker-files/clover.xml",
             "thresholds": {
                 "global": {
-                    "lines": 55
+                    "lines": 76,
+                    "functions": 79
                 },
                 "/app/Boxer": {
-                    "lines": 78
+                    "lines": 78,
+                    "functions": 55
                 }
             }
         }
