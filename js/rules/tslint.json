@@ -119,6 +119,7 @@
         "variable-name": [
             true,
             "ban-keywords",
+            "allow-leading-underscore",
             "check-format", "allow-snake-case", "allow-pascal-case"
         ],
         "whitespace": [
