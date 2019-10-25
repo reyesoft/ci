@@ -27,6 +27,11 @@
     "suggest": {
         "weebly/phpstan-laravel": "^1.1"
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Reyesoft\\Ci\\": "php/src"
+        }
+    },
     "extra": {
         "coverage": {
             "file": "./tests/Tools/coverage-checker-files/clover.xml",
