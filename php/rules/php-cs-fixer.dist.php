@@ -71,7 +71,7 @@ return PhpCsFixer\Config::create()
 
         'header_comment' => [
             'header' =>
-                "Copyright (C) 1997-2018 Reyesoft <info@reyesoft.com>.\n".
+                "Copyright (C) 1997-2020 Reyesoft <info@reyesoft.com>.\n".
                 "\n".
                 "This file is part of ".($project_name ? $project_name.'. '.$project_name : 'Reyesoft project and').
                 " can not be copied and/or\n".
