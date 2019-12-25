@@ -48,6 +48,10 @@ return PhpCsFixer\Config::create()
         'single_line_throw' => false,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'phpdoc_add_missing_param_annotation' => false,
+
+        // disable fix php docs on single line like /** @var XXX $xxx */
+        'phpdoc_to_comment' => false,
+
         // 'php_unit_test_case_static_method_calls' => false,
 
         'ordered_class_elements' => [
