@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed 
 - New version of PHPSTAN. 
 - New version of PHP Mess Detector. 
+- New version of PHPUnit. 
 
 ## [1.1.3] - 2019-12-25
 
