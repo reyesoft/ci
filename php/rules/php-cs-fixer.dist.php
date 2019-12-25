@@ -27,12 +27,13 @@ return PhpCsFixer\Config::create()
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['singleLine' => true, 'singleItemSingleLine' => true],
         'yoda_style' => false,
-        'class_attributes_separation' => ['elements' => 'method'],
+        'class_attributes_separation' => ['elements' => ['method']],
         'explicit_indirect_variable' => true,
         'phpdoc_align' => ['align' => 'left'],
         'linebreak_after_opening_tag' => true,
         'no_alternative_syntax' => true,
         'date_time_immutable' => true,  // ver implicancias de este cambio
+        'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
@@ -45,10 +46,13 @@ return PhpCsFixer\Config::create()
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
         'native_constant_invocation' => false, // PHP_EOL -> \PHP_EOL (added like Symfony:risky)
         'single_line_throw' => false,
+        'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
+        'phpdoc_add_missing_param_annotation' => false,
+        // 'php_unit_test_case_static_method_calls' => false,
 
-        /*
         'ordered_class_elements' => [
             'use_trait',
+            /*
             'constant_public',
             'constant_protected',
             'constant_private',
@@ -62,8 +66,9 @@ return PhpCsFixer\Config::create()
             'method_public',
             'method_protected',
             'method_private'
+            */
         ],
-        */
+
         'header_comment' => [
             'header' =>
                 "Copyright (C) 1997-2018 Reyesoft <info@reyesoft.com>.\n".
