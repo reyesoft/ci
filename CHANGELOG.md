@@ -9,4 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.2] - 2019-12-25
 
 ### Fixed
-- Removed PHP CS FIXER rules contained on presets. 
+- Removed PHP CS FIXER rules contained on presets.
+
+### Changed 
+- PHP CS FIXER rule single_line_throw disabled. 
