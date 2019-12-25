@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.3] - 2019-12-25
+
+### Changed
+- PHP CS FIXER phpdoc_to_comment rule disabled.
+
 ## [1.1.2] - 2019-12-25
 
 ### Fixed
