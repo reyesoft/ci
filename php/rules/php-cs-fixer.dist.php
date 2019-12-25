@@ -27,7 +27,7 @@ return PhpCsFixer\Config::create()
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['singleLine' => true, 'singleItemSingleLine' => true],
         'yoda_style' => false,
-        'class_attributes_separation' => ['method'],
+        'class_attributes_separation' => ['elements' => 'method'],
         'explicit_indirect_variable' => true,
         'phpdoc_align' => ['align' => 'left'],
         'linebreak_after_opening_tag' => true,
