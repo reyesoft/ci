@@ -5,6 +5,9 @@
      xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0"
      xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
 
-    <rule ref="../../../../../reyesoft/ci/php/rules/phpmd.dist.xml" />
+    <rule ref="../../../../../reyesoft/ci/php/rules/phpmd.dist.xml">
+        <!-- problem with preg_replace and $matches parameter -->
+        <exclude name="UndefinedVariable" />
+    </rule>
 
 </ruleset>

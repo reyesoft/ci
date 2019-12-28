@@ -1,10 +1,15 @@
 includes:
+    # disable next line with laravel, check accepted rules on saldo project
 	- ../../vendor/phpstan/phpstan-strict-rules/rules.neon
-	- ../../vendor/weebly/phpstan-laravel/extension.neon
+	- ../../vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    bootstrap: %rootDir%/../../../resources/ci/tools/phpstan/bootstrap.php
-
+    bootstrap: phpstan-bootstrap.php
+    paths:
+        - ../../app
+        - ../../bootstrap/*.php
+        - ../../config
+    level: max
     ignoreErrors:
-        # Laravel
-        - '#Call to an undefined static method Illuminate\\Support\\Facades\\Route::\S.+().#'
+        ## mercadopago official library
+        - '#Access to protected property MercadoPago\\Payment#'
