@@ -16,7 +16,7 @@
     ],
     "require": {
         "friendsofphp/php-cs-fixer": "2.16.1",
-        "phpmd/phpmd" : "2.8.0",
+        "phpmd/phpmd" : "2.8.1",
         "phpstan/phpstan": "0.12.*" ,
         "phpstan/phpstan-strict-rules": "0.12.*",
         "phpstan/phpstan-phpunit": "0.12.*",
@@ -27,7 +27,7 @@
         "phpunit/phpunit": "^8.3"
     },
     "suggest": {
-        "weebly/phpstan-laravel": "^1.1"
+        "nunomaduro/larastan": "0.5.0"
     },
     "extra": {
         "coverage": {
