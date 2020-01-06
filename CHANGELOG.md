@@ -6,6 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-12-25
+
+### Added
+- Add tslint-config-prettier
+
+### Changed
+- Fix ts-lint rules to work with prettier
+
 ## [1.2.0] - 2019-12-25
 
 ### Changed 
