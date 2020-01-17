@@ -1,6 +1,6 @@
 {
     "name": "reyesoft-ci",
-    "version": "1.0.3",
+    "version": "2.0.0",
     "description": "Reyesoft Continuous Integration",
     "scripts": {},
     "engines": {
@@ -26,6 +26,7 @@
         "jest-zone-patch": "^0.0.7",
         "lint-staged": "9.2.1",
         "prettier": "1.12.0",
+        "tslint-config-prettier": "^1.18.0",
         "rimraf": "2.5.4",
         "rollup": "0.50.0",
         "sass-lint": "1.13.1",
