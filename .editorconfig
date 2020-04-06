@@ -1,10 +1,8 @@
 # EditorConfig is awesome: http://EditorConfig.org
 # All EditorConfig equals: https://github.com/reyesoft/ci/
 
-# top-most EditorConfig file
 root = true
 
-# Unix-style newlines with a newline ending every file
 [*]
 charset = utf-8
 indent_style = space
