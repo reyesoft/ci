@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "codelyzer": "4.2.1",
+        "eslint": "^4.18.2",
+        "handlebars": "^4.3.0",
         "jest": "24.8.0",
         "jest-preset-angular": "3.0.1",
         "jest-zone-patch": "^0.0.7",
