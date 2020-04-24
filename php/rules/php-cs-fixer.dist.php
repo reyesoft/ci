@@ -52,7 +52,7 @@ return PhpCsFixer\Config::create()
         // disable fix php docs on single line like /** @var XXX $xxx */
         'phpdoc_to_comment' => false,
 
-        // 'php_unit_test_case_static_method_calls' => false,
+        'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
 
         'ordered_class_elements' => [
             'use_trait',

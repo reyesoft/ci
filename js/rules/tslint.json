@@ -1,6 +1,7 @@
 {
     "extends": [
-        "tslint:all"
+        "tslint:all",
+        "tslint-config-prettier"
     ],
     "rulesDirectory": [
         "../../../codelyzer"
@@ -24,7 +25,6 @@
             true,
             "rxjs/Rx"
         ],
-        "align": [true, "elements", "members", "parameters", "statements"],
         "no-unnecessary-type-assertion": false,
         "no-unused-variable": false,
         "restrict-plus-operands": false,
@@ -45,13 +45,7 @@
             "check-space"
         ],
         "curly": [true, "ignore-same-line"],
-        "eofline": true,
         "encoding": true,
-        "indent": [
-            true,
-            "spaces"
-        ],
-        "max-line-length": [true, 149],
         "member-ordering": [true,
             { "order": "fields-first" }
         ],
@@ -75,23 +69,10 @@
         "ordered-imports": false,
         "prefer-conditional-expression": false,
         "prefer-const": false,
-        "quotemark": [
-            true,
-            "single"
-        ],
-        "semicolon": [
-            true,
-            "always"
-        ],
+
         "strict-boolean-expressions": false,
         "switch-default": false,
         "switch-final-break": [true, "always"],
-        "trailing-comma": [
-            true, {
-                "multiline": "never",
-                "singleline": "never"
-            }
-        ],
         "triple-equals": [true, "allow-null-check"],
         "typedef": [
             true,
@@ -100,41 +81,14 @@
             "object-destructuring",
             "array-destructuring"
         ],
-        "typedef-whitespace": [true,
-            {
-                "call-signature": "nospace",
-                "index-signature": "nospace",
-                "parameter": "nospace",
-                "property-declaration": "nospace",
-                "variable-declaration": "nospace"
-            },
-            {
-                "call-signature": "onespace",
-                "index-signature": "onespace",
-                "parameter": "onespace",
-                "property-declaration": "onespace",
-                "variable-declaration": "onespace"
-            }
-        ],
         "variable-name": [
             true,
             "ban-keywords",
-            "allow-leading-underscore",
             "check-format", "allow-snake-case", "allow-pascal-case"
-        ],
-        "whitespace": [
-            true,
-            "check-branch",
-            "check-operator",
-            "check-module",
-            "check-separator",
-            "check-type",
-            "check-preblock"
         ],
         "no-implicit-dependencies": false,
         "no-redundant-jsdoc": false,
         "no-unnecessary-class": false,
-        "file-name-casing": [true, "kebab-case"],
 
         "newline-per-chained-call": false,
         "prefer-readonly": false,
