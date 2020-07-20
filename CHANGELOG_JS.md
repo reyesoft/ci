@@ -11,3 +11,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Add tslint-config-prettier
 
+### Changed
+- jest-preset-angular, lint-staged, prettier, rollup y tslint updagraded.
