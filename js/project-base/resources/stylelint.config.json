@@ -1,0 +1,48 @@
+{
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-config-sass-guidelines"
+    ],
+    "plugins": [
+        "stylelint-scss"
+    ],
+    "rules": {
+        "indentation": 4,
+        "order/properties-alphabetical-order": null,
+        "selector-pseudo-element-no-unknown": [
+            true, {
+                "ignorePseudoElements": [
+                    "ng-deep"
+                ]
+            }
+        ],
+        "selector-type-no-unknown": [
+            true, {
+                "ignoreTypes": [
+                    "/^mat-/",
+                    "/^app-/"
+                ]
+            }
+        ],
+        "color-hex-length": null,
+
+        "scss/at-mixin-pattern": null,
+        "property-no-vendor-prefix": null,
+        "media-feature-name-no-vendor-prefix": null,
+
+        "declaration-empty-line-before": null,
+        "function-name-case": null,
+        "no-empty-source": null,
+        "value-keyword-case": null,
+
+        "color-named": "always-where-possible",
+        "rule-empty-line-before": [
+            "always",{
+                "ignore": [
+                    "first-nested",
+                    "after-comment"
+                ]
+            }
+        ]
+    }
+}
