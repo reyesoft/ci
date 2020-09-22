@@ -55,7 +55,7 @@ composer require-dev reyesoft/ci
 ### Tools
 
 * tslint
-* sass-lint
+* stylelint
 * prettier (ts, md and json files)
 
 ### Install
@@ -64,10 +64,13 @@ composer require-dev reyesoft/ci
 
 ```json
 {
-    "sasslintConfig": "resources/.sass-lint.yml",
+    "stylelint": {
+        "extends": "./resources/stylelint.config.json"
+    },
     "scripts": {
-        "lint": "ng lint && sass-lint -c -q",
-        "fix": "ng lint --fix && yarn prettier:fix",
+        "lint": "ng lint && yarn lint:style",
+        "lint:style": "yarn stylelint \"src/**/*.{css,scss,sass}\"",
+        "fix": "ng lint --fix && yarn prettier:fix && yarn lint:style --fix",
         "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
         "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
         "precommit": "lint-staged"

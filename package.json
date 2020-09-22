@@ -29,7 +29,9 @@
         "tslint-config-prettier": "1.18.0",
         "rimraf": "3.0.2",
         "rollup": "2.22.1",
-        "sass-lint": "1.13.1",
+        "stylelint": "^13.6.1",
+        "stylelint-config-standard": "^20.0.0",
+        "stylelint-config-sass-guidelines": "^7.0.0",
         "sorcery": "0.10.0",
         "tslint": "6.1.2"
     }
