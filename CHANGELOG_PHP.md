@@ -9,9 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - coverage-check fix when warning don't exist or is equal to zero.
 
+## [1.4.1]
+
 ### Changed
 - squizlabs/php_codesniffer version bump.
-- sebastian/phpcpd version bump.
 
 ## [1.4.0] - 2021-04-06
 
