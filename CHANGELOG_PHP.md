@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.4] - 2021-05-15
+## [1.4.2] - 2021-05-15
 
 ### Fixed
 - coverage-check fix when warning don't exist or is equal to zero.
@@ -12,6 +12,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - squizlabs/php_codesniffer version bump.
 - sebastian/phpcpd version bump.
+
+## [1.4.0] - 2021-04-06
+
+### Updated
+- sebastian/phpcpd updated. Required by Laravel 8.x.
 
 ## [1.3.3] - 2020-05-12
 
