@@ -8,6 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - coverage-check fix when warning don't exist.
+
+## [1.3.3] - 2020-05-12
+
+### Updated
+- sebastian/phpcpd updated. Required by Laravel 7.x. Require php7.3.
+ 
+## [1.3.1] - 2020-05-12
+
+### Removed
+- povils/phpmnd
  
 ## [1.3.0] - 2020-04-24
 
