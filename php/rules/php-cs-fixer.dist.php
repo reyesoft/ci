@@ -34,6 +34,9 @@ return PhpCsFixer\Config::create()
         'no_alternative_syntax' => true,
         'date_time_immutable' => true,  // ver implicancias de este cambio
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'modernize_types_casting' => false,
+        'no_unset_on_property' => false,    // set model property=null is sent to DB
+        'psr_autoloading' => true,
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
@@ -41,6 +44,10 @@ return PhpCsFixer\Config::create()
         '@PHP71Migration' => true,
         '@PHP71Migration:risky' => true,
         '@PHP73Migration' => true,
+        '@PHP74Migration' => true,
+        '@PHP74Migration:risky' => true,
+        '@PHP80Migration' => true,
+        '@PHP80Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)

@@ -4,7 +4,6 @@ includes:
 	- ../../vendor/nunomaduro/larastan/extension.neon
 
 parameters:
-    bootstrap: phpstan-bootstrap.php
     paths:
         - ../../app
         - ../../bootstrap/*.php
