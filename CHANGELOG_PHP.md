@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.1] - 2021-04-06
+
+### Updated
+- friendsofphp/php-cs-fixer. Do `PHP_CS_FIXER_FUTURE_MODE=1 php-cs-fixer fix` and prepare for cs-fixer v3.
+
 ## [1.4.0] - 2021-04-06
 
 ### Updated
