@@ -16,7 +16,11 @@ return (new PhpCsFixer\Config())
         // '@PSR2' => true, // cool, but add break lines on every fucntion with 1+ params
         '@PHPUnit60Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'general_phpdoc_annotation_remove' => ['expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'],
+        'general_phpdoc_annotation_remove' => [
+            'annotations' => [
+                'expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'
+            ],
+        ],
         'no_useless_return' => true,
         'simplified_null_return' => true,
         'backtick_to_shell_exec' => true,
@@ -25,9 +29,9 @@ return (new PhpCsFixer\Config())
         'braces' => ['allow_single_line_closure' => true],
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
-        'class_definition' => ['singleLine' => true, 'singleItemSingleLine' => true],
+        'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
         'yoda_style' => false,
-        'class_attributes_separation' => ['method' => 'one'],
+        'class_attributes_separation' => ['elements' => ['method' => 'one']],
         'explicit_indirect_variable' => true,
         'phpdoc_align' => ['align' => 'left'],
         'linebreak_after_opening_tag' => true,
@@ -62,22 +66,24 @@ return (new PhpCsFixer\Config())
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
 
         'ordered_class_elements' => [
-            'use_trait',
-            /*
-            'constant_public',
-            'constant_protected',
-            'constant_private',
-            'property_public',
-            'property_protected',
-            'property_private',
-            'construct',
-            'destruct',
-            'magic',
-            'phpunit',
-            'method_public',
-            'method_protected',
-            'method_private'
-            */
+            'order' => [
+                'use_trait',
+                /*
+                'constant_public',
+                'constant_protected',
+                'constant_private',
+                'property_public',
+                'property_protected',
+                'property_private',
+                'construct',
+                'destruct',
+                'magic',
+                'phpunit',
+                'method_public',
+                'method_protected',
+                'method_private'
+                */
+            ],
         ],
 
         'header_comment' => [
@@ -87,7 +93,7 @@ return (new PhpCsFixer\Config())
                 "This file is part of ".($project_name ? $project_name.'. '.$project_name : 'Reyesoft project and').
                 " can not be copied and/or\n".
                 "distributed without the express permission of Reyesoft",
-            'commentType' => 'PHPDoc',
+            'comment_type' => 'PHPDoc',
             'location' => 'after_open',
             'separate' => 'bottom'
         ],
