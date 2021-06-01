@@ -45,9 +45,9 @@ return PhpCsFixer\Config::create()
         '@PHP71Migration:risky' => true,
         '@PHP73Migration' => true,
         '@PHP74Migration' => true,
-        '@PHP74Migration:risky' => true,
+        // '@PHP74Migration:risky' => true,
         '@PHP80Migration' => true,
-        '@PHP80Migration:risky' => true,
+        // '@PHP80Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
