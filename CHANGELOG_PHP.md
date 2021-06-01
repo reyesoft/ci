@@ -6,8 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.4.1] - 2021-04-06
 
-### Updated
+### Changed
 - friendsofphp/php-cs-fixer. Do `PHP_CS_FIXER_FUTURE_MODE=1 php-cs-fixer fix` and prepare for cs-fixer v3.
+- BREAK CHANGE: psr_autoloading is true now, will be change class names.
 
 ## [1.4.0] - 2021-04-06
 
