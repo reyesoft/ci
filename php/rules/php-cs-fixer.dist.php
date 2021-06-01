@@ -6,7 +6,7 @@ EOF;
 
 $project_name = $project_name ?? '';
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
