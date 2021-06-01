@@ -6,7 +6,7 @@ EOF;
 
 $project_name = $project_name ?? '';
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@Symfony' => true,
@@ -16,7 +16,11 @@ return PhpCsFixer\Config::create()
         // '@PSR2' => true, // cool, but add break lines on every fucntion with 1+ params
         '@PHPUnit60Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'general_phpdoc_annotation_remove' => ['expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'],
+        'general_phpdoc_annotation_remove' => [
+            'annotations' => [
+                'expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'
+            ],
+        ],
         'no_useless_return' => true,
         'simplified_null_return' => true,
         'backtick_to_shell_exec' => true,
@@ -25,15 +29,18 @@ return PhpCsFixer\Config::create()
         'braces' => ['allow_single_line_closure' => true],
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
-        'class_definition' => ['singleLine' => true, 'singleItemSingleLine' => true],
+        'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
         'yoda_style' => false,
-        'class_attributes_separation' => ['elements' => ['method']],
+        'class_attributes_separation' => ['elements' => ['method' => 'one']],
         'explicit_indirect_variable' => true,
         'phpdoc_align' => ['align' => 'left'],
         'linebreak_after_opening_tag' => true,
         'no_alternative_syntax' => true,
         'date_time_immutable' => true,  // ver implicancias de este cambio
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'modernize_types_casting' => false,
+        'no_unset_on_property' => false,    // set model property=null is sent to DB
+        'psr_autoloading' => true,
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
@@ -41,6 +48,10 @@ return PhpCsFixer\Config::create()
         '@PHP71Migration' => true,
         '@PHP71Migration:risky' => true,
         '@PHP73Migration' => true,
+        '@PHP74Migration' => true,
+        // '@PHP74Migration:risky' => true,
+        '@PHP80Migration' => true,
+        // '@PHP80Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
@@ -54,23 +65,35 @@ return PhpCsFixer\Config::create()
 
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
 
+        'blank_line_before_statement' => [
+            'statements' => [
+                // 'break',
+                'continue',
+                'declare',
+                'return',
+                'throw',
+                'try',
+            ],
+        ],
         'ordered_class_elements' => [
-            'use_trait',
-            /*
-            'constant_public',
-            'constant_protected',
-            'constant_private',
-            'property_public',
-            'property_protected',
-            'property_private',
-            'construct',
-            'destruct',
-            'magic',
-            'phpunit',
-            'method_public',
-            'method_protected',
-            'method_private'
-            */
+            'order' => [
+                'use_trait',
+                /*
+                'constant_public',
+                'constant_protected',
+                'constant_private',
+                'property_public',
+                'property_protected',
+                'property_private',
+                'construct',
+                'destruct',
+                'magic',
+                'phpunit',
+                'method_public',
+                'method_protected',
+                'method_private'
+                */
+            ],
         ],
 
         'header_comment' => [
@@ -80,7 +103,7 @@ return PhpCsFixer\Config::create()
                 "This file is part of ".($project_name ? $project_name.'. '.$project_name : 'Reyesoft project and').
                 " can not be copied and/or\n".
                 "distributed without the express permission of Reyesoft",
-            'commentType' => 'PHPDoc',
+            'comment_type' => 'PHPDoc',
             'location' => 'after_open',
             'separate' => 'bottom'
         ],

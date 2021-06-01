@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.3] - 2021-06-01
+
+### Added
+- cs-fixer `@PHP74Migration:risky` and `@PHP80Migration:risky` can be applied.
+
+### Changed
+- friendsofphp/php-cs-fixer. Do `PHP_CS_FIXER_FUTURE_MODE=1 php-cs-fixer fix` and prepare for cs-fixer v3.
+- BREAK CHANGE: psr_autoloading is true now, will be change class names.
+- BREAK CHANGE: psr_autoloading is true now, will be change class names.
+
 ## [1.4.2] - 2021-05-15
 
 ### Fixed
