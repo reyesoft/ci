@@ -65,6 +65,16 @@ return (new PhpCsFixer\Config())
 
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
 
+        'blank_line_before_statement' => [
+            'statements' => [
+                // 'break',
+                'continue',
+                'declare',
+                'return',
+                'throw',
+                'try',
+            ],
+        ],
         'ordered_class_elements' => [
             'order' => [
                 'use_trait',
