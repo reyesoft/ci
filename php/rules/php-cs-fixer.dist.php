@@ -59,6 +59,7 @@ return (new PhpCsFixer\Config())
         'single_line_throw' => false,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'phpdoc_add_missing_param_annotation' => false,
+        'use_arrow_functions' => false,
 
         // disable fix php docs on single line like /** @var XXX $xxx */
         'phpdoc_to_comment' => false,
