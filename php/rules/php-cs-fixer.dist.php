@@ -52,6 +52,7 @@ return (new PhpCsFixer\Config())
         '@PHP74Migration:risky' => true,
         '@PHP80Migration' => true,
         '@PHP80Migration:risky' => true,
+        '@PHPUnit84Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
