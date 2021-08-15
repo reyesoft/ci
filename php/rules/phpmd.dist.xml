@@ -11,10 +11,6 @@
     <rule ref="rulesets/cleancode.xml">
         <!-- da problems con el eloquent, por ejemplo Company::first() -->
         <exclude name="StaticAccess" />
-
-
-        <!-- ACTIVAR A FUTURO @todo -->
-        <exclude name="ElseExpression" />
     </rule>
 
     <!-- esto a futuro deberia bajar, luego de los integration tests -->
