@@ -49,9 +49,10 @@ return (new PhpCsFixer\Config())
         '@PHP71Migration:risky' => true,
         '@PHP73Migration' => true,
         '@PHP74Migration' => true,
-        // '@PHP74Migration:risky' => true,
+        '@PHP74Migration:risky' => true,
         '@PHP80Migration' => true,
-        // '@PHP80Migration:risky' => true,
+        '@PHP80Migration:risky' => true,
+        '@PHPUnit84Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
@@ -59,6 +60,7 @@ return (new PhpCsFixer\Config())
         'single_line_throw' => false,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'phpdoc_add_missing_param_annotation' => false,
+        'use_arrow_functions' => false,
 
         // disable fix php docs on single line like /** @var XXX $xxx */
         'phpdoc_to_comment' => false,
