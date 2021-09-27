@@ -1,0 +1,10 @@
+{
+    "extends": "./tsconfig.json",
+    "angularCompilerOptions": {
+        "fullTemplateTypeCheck": true,
+        "strictInjectionParameters": true,
+        "strictTemplates": true,
+        "enableIvy": true
+      },
+    "include": ["src"]
+  }

@@ -58,23 +58,26 @@ composer require-dev reyesoft/ci
 * sass-lint
 * prettier (ts, md and json files)
 
-### Install
+## Install
+### NX with Angular
 
 `package.json`
+#### Yarn
 
 ```json
 {
     "sasslintConfig": "resources/.sass-lint.yml",
     "scripts": {
-        "lint": "ng lint && sass-lint -c -q",
-        "fix": "ng lint --fix && yarn prettier:fix",
-        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
-        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
-        "precommit": "lint-staged"
+        "lint": "yarn affected:lint && yarn lint:style",
+        "lint:style": "yarn stylelint \"apps/*/**/*.{css,scss,sass}\"",
+        "fix": "yarn affected:lint --fix && yarn prettier:fix && yarn lint:style --fix",
+        "prettier:fix": "prettier apps/*/**/*.{ts,sass,scss,md} libs/*/**/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier apps/**/*.{sass,scss,md} libs/**/*.{sass,scss,md} -l\" \"yarn prettier apps/*/src/**/*.ts libs/**/*.ts -l\"",
+        "precommit": "lint-staged",
     },
     "lint-staged": {
         "*.ts": [
-            "yarn tslint --fix",
+            "yarn eslint --fix",
             "git add"
         ],
         "*.{ts,md,scss,sass}": [
@@ -84,6 +87,88 @@ composer require-dev reyesoft/ci
         "package.json": [
             "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
             "git add yarn.lock"
+        ]
+    }
+}
+```
+
+#### Npm
+
+```json
+{
+    "sasslintConfig": "resources/.sass-lint.yml",
+    "scripts": {
+        "lint": "npm run affected:lint && npm run lint:style",
+        "lint:style": "npm run stylelint \"apps/*/**/*.{css,scss,sass}\"",
+        "fix": "npm run affected:lint --fix && npm run prettier:fix && npm run lint:style --fix",
+        "prettier:fix": "prettier apps/*/**/*.{ts,sass,scss,md} libs/*/**/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"npm run prettier apps/**/*.{sass,scss,md} libs/**/*.{sass,scss,md} -l\" \"npm run prettier apps/*/src/**/*.ts libs/**/*.ts -l\"",
+        "precommit": "lint-staged",
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "npm run prettier:fix",
+            "git add"
+        ]
+    }
+}
+```
+### Only Angular
+
+#### Yarn
+```json
+{
+    "sasslintConfig": "resources/.sass-lint.yml",
+    "scripts": {
+        "lint": "yarn lint && yarn lint:style",
+        "lint:style": "yarn stylelint \**/*.{css,scss,sass}\"",
+        "fix": "yarn affected:lint --fix && yarn prettier:fix && yarn lint:style --fix",
+        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
+        "precommit": "lint-staged",
+    },
+    "lint-staged": {
+        "*.ts": [
+            "yarn eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "yarn prettier:fix",
+            "git add"
+        ],
+        "package.json": [
+            "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
+            "git add yarn.lock"
+        ]
+    }
+}
+```
+
+#### Npm
+
+```json
+{
+    "sasslintConfig": "resources/.sass-lint.yml",
+    "scripts": {
+        "lint": "npm run lint && npm run lint:style",
+        "lint:style": "npm run stylelint \**/*.{css,scss,sass}\"",
+        "fix": "npm run affected:lint --fix && npm run prettier:fix && npm run lint:style --fix",
+        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
+        "precommit": "lint-staged",
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "npm run prettier:fix",
+            "git add"
         ]
     }
 }
