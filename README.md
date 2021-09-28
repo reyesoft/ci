@@ -62,36 +62,6 @@ composer require-dev reyesoft/ci
 ### NX with Angular
 
 `package.json`
-#### Yarn
-
-```json
-{
-    "sasslintConfig": "resources/.sass-lint.yml",
-    "scripts": {
-        "lint": "yarn affected:lint && yarn lint:style",
-        "lint:style": "yarn stylelint \"apps/*/**/*.{css,scss,sass}\"",
-        "fix": "yarn affected:lint --fix && yarn prettier:fix && yarn lint:style --fix",
-        "prettier:fix": "prettier apps/*/**/*.{ts,sass,scss,md} libs/*/**/*.{ts,sass,scss,md} --write",
-        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier apps/**/*.{sass,scss,md} libs/**/*.{sass,scss,md} -l\" \"yarn prettier apps/*/src/**/*.ts libs/**/*.ts -l\"",
-        "precommit": "lint-staged",
-    },
-    "lint-staged": {
-        "*.ts": [
-            "yarn eslint --fix",
-            "git add"
-        ],
-        "*.{ts,md,scss,sass}": [
-            "yarn prettier:fix",
-            "git add"
-        ],
-        "package.json": [
-            "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
-            "git add yarn.lock"
-        ]
-    }
-}
-```
-
 #### Npm
 
 ```json
@@ -119,35 +89,6 @@ composer require-dev reyesoft/ci
 ```
 ### Only Angular
 
-#### Yarn
-```json
-{
-    "sasslintConfig": "resources/.sass-lint.yml",
-    "scripts": {
-        "lint": "yarn lint && yarn lint:style",
-        "lint:style": "yarn stylelint \**/*.{css,scss,sass}\"",
-        "fix": "yarn affected:lint --fix && yarn prettier:fix && yarn lint:style --fix",
-        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
-        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
-        "precommit": "lint-staged",
-    },
-    "lint-staged": {
-        "*.ts": [
-            "yarn eslint --fix",
-            "git add"
-        ],
-        "*.{ts,md,scss,sass}": [
-            "yarn prettier:fix",
-            "git add"
-        ],
-        "package.json": [
-            "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
-            "git add yarn.lock"
-        ]
-    }
-}
-```
-
 #### Npm
 
 ```json
@@ -173,5 +114,23 @@ composer require-dev reyesoft/ci
     }
 }
 ```
+In case of using yarn you can use:
 
+```json
+
+"lint-staged": {
+        "*.ts": [
+            "yarn eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "yarn prettier:fix",
+            "git add"
+        ],
+        "package.json": [
+            "node ./node_modules/reyesoft-ci/js/scripts/yarn-install.js",
+            "git add yarn.lock"
+        ]
+    }
+```
 `yarn fix` for various projects: `ng lint project1 --fix && ng lint project2 --fix && yarn prettier:fix`
