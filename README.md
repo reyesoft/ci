@@ -58,23 +58,69 @@ composer require-dev reyesoft/ci
 * sass-lint
 * prettier (ts, md and json files)
 
-### Install
+## Install
+### NX with Angular
 
 `package.json`
+#### Npm
 
 ```json
 {
     "sasslintConfig": "resources/.sass-lint.yml",
     "scripts": {
-        "lint": "ng lint && sass-lint -c -q",
-        "fix": "ng lint --fix && yarn prettier:fix",
-        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
-        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
-        "precommit": "lint-staged"
+        "lint": "npm run affected:lint && npm run lint:style",
+        "lint:style": "npm run stylelint \"apps/*/**/*.{css,scss,sass}\"",
+        "fix": "npm run affected:lint --fix && npm run prettier:fix && npm run lint:style --fix",
+        "prettier:fix": "prettier apps/*/**/*.{ts,sass,scss,md} libs/*/**/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"npm run prettier apps/**/*.{sass,scss,md} libs/**/*.{sass,scss,md} -l\" \"npm run prettier apps/*/src/**/*.ts libs/**/*.ts -l\"",
+        "precommit": "lint-staged",
     },
     "lint-staged": {
         "*.ts": [
-            "yarn tslint --fix",
+            "npm run eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "npm run prettier:fix",
+            "git add"
+        ]
+    }
+}
+```
+### Only Angular
+
+#### Npm
+
+```json
+{
+    "sasslintConfig": "resources/.sass-lint.yml",
+    "scripts": {
+        "lint": "npm run lint && npm run lint:style",
+        "lint:style": "npm run stylelint \**/*.{css,scss,sass}\"",
+        "fix": "npm run affected:lint --fix && npm run prettier:fix && npm run lint:style --fix",
+        "prettier:fix": "prettier **/*.{ts,sass,scss,md} --write",
+        "prettier:check": "bash node_modules/reyesoft-ci/parallel.bash -s \"yarn prettier **/*.{sass,scss,md} -l\" \"yarn prettier **/*.ts -l\"",
+        "precommit": "lint-staged",
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run eslint --fix",
+            "git add"
+        ],
+        "*.{ts,md,scss,sass}": [
+            "npm run prettier:fix",
+            "git add"
+        ]
+    }
+}
+```
+In case of using yarn you can use:
+
+```json
+
+"lint-staged": {
+        "*.ts": [
+            "yarn eslint --fix",
             "git add"
         ],
         "*.{ts,md,scss,sass}": [
@@ -86,7 +132,5 @@ composer require-dev reyesoft/ci
             "git add yarn.lock"
         ]
     }
-}
 ```
-
 `yarn fix` for various projects: `ng lint project1 --fix && ng lint project2 --fix && yarn prettier:fix`
