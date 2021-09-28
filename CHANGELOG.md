@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
-- Added eslint rules and tsconfig rule. []() 
+- Added eslint rules and tsconfig rule. [#64](https://github.com/reyesoft/ci/pull/64) 
 
 ## [2.0.0] - 2019-12-25
 
