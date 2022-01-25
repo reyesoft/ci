@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.5] - 2022-01-25
+
+### Updated
+- friendsofphp/php-cs-fixer to 3.4.0
+- phpmd/phpmd" : "^2.11.1
+- phpstan/phpstan to 1.4.2" ,
+- phpstan/phpstan-strict-rules to 1.1.0
+- phpstan/phpstan-phpunit to 1.0.0
+- sebastian/phpcpd to 6.0.3
+- squizlabs/php_codesniffer to 3.6.2
+- phpunit/phpunit to 9.5.4
+
 ## [1.4.4] - 2021-08-15
 
 ### Changed
@@ -28,18 +40,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - squizlabs/php_codesniffer version bump.
-
-## [1.4.1] - 2022-01-25
-
-### Updated
-- friendsofphp/php-cs-fixer to 3.4.0
-- phpmd/phpmd" : "^2.11.1
-- phpstan/phpstan to 1.4.2" ,
-- phpstan/phpstan-strict-rules to 1.1.0
-- phpstan/phpstan-phpunit to 1.0.0
-- sebastian/phpcpd to 6.0.3
-- squizlabs/php_codesniffer to 3.6.2
-- phpunit/phpunit to 9.5.4
 
 ## [1.4.0] - 2021-04-06
 
