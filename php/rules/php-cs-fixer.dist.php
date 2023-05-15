@@ -26,7 +26,6 @@ return (new PhpCsFixer\Config())
         'backtick_to_shell_exec' => true,
         'multiline_comment_opening_closing' => true,
         'escape_implicit_backslashes' => true,
-        'braces' => ['allow_single_line_closure' => true],
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
