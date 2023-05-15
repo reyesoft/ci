@@ -41,6 +41,12 @@ return (new PhpCsFixer\Config())
         'no_unset_on_property' => false,    // set model property=null is sent to DB
         'psr_autoloading' => true,
 
+        'no_alias_functions' => false,
+        'set_type_to_cast' => false,
+        'strict_comparison' => false,
+        'phpdoc_order' => true,
+        'global_namespace_import' => false,
+
         /* PHP 7.0 */
         '@PHP70Migration' => true,
         '@PHP70Migration:risky' => true,
