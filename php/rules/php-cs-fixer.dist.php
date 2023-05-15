@@ -40,16 +40,6 @@ return (new PhpCsFixer\Config())
         'modernize_types_casting' => false,
         'no_unset_on_property' => false,    // set model property=null is sent to DB
         'psr_autoloading' => true,
-        'strict_comparison' => false,
-        'no_alias_functions' => false,
-        'pow_to_exponentiation' => false,
-        'set_type_to_cast' => false,
-        'void_return' => false,
-        'phpdoc_order' => true,
-        'comment_to_phpdoc' => ['ignored_tags' => ['codeCoverageIgnoreStart']],
-        'global_namespace_import' => false,
-        'return_assignment' => false,    // problem on ObjectsEloquentBuilder
-        'final_internal_class' => false,
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
