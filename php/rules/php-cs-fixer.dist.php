@@ -26,7 +26,6 @@ return (new PhpCsFixer\Config())
         'backtick_to_shell_exec' => true,
         'multiline_comment_opening_closing' => true,
         'escape_implicit_backslashes' => true,
-        'braces' => ['allow_single_line_closure' => true],
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
@@ -41,16 +40,7 @@ return (new PhpCsFixer\Config())
         'modernize_types_casting' => false,
         'no_unset_on_property' => false,    // set model property=null is sent to DB
         'psr_autoloading' => true,
-        'strict_comparison' => false,
-        'no_alias_functions' => false,
-        'pow_to_exponentiation' => false,
-        'set_type_to_cast' => false,
-        'void_return' => false,
         'phpdoc_order' => true,
-        'comment_to_phpdoc' => ['ignored_tags' => ['codeCoverageIgnoreStart']],
-        'global_namespace_import' => false,
-        'return_assignment' => false,    // problem on ObjectsEloquentBuilder
-        'final_internal_class' => false,
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
