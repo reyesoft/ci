@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "friendsofphp/php-cs-fixer": "^3.15.1",
+        "friendsofphp/php-cs-fixer": "^3.08.0",
         "phpmd/phpmd" : "^2.11.1",
         "phpstan/phpstan": "^1.4.2" ,
         "phpstan/phpstan-strict-rules": "^1.5.1",
