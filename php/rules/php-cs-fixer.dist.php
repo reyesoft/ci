@@ -53,8 +53,6 @@ return (new PhpCsFixer\Config())
         'final_internal_class' => false,
 
         /* PHP 7.0 */
-        '@PHP70Migration' => true,
-        '@PHP70Migration:risky' => true,
         '@PHP73Migration' => true,
         '@PHP74Migration' => true,
         '@PHP74Migration:risky' => true,
