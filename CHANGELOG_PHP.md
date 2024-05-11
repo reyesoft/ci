@@ -14,15 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - phpmd/phpmd to ^2.15
 - phpstan/phpstan to ^1.1
 
-Update php-cs-fixer.php is required from
+1. Update php-cs-fixer.php is required from
+´´´
 return $config
     ->setFinder(
         PhpCsFixer\Finder::create()
+´´´
 to
+´´´
 return (new PhpCsFixer\Config())
     ->setFinder(
         (new PhpCsFixer\Finder())
-
+´´´
+2. Remove doube-spaces from parallel.bash on composer.json
 
 ## [1.4.0] - 2021-04-06
 

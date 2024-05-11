@@ -6,7 +6,8 @@ includes:
     - ../../vendor/weebly/phpstan-laravel/extension.neon
 
 parameters:
-    bootstrap: %rootDir%/../../../resources/ci/tools/phpstan/bootstrap.php
+    bootstrapFiles:
+        - %rootDir%/../../larastan/larastan/bootstrap.php
     ignoreErrors:
         - '#Parameter \#2 \$delimiters of function League\\Csv\\delimiter_detect expects array<string>, array<int, array|string> given.#'
         - '#Access to an undefined property .+::\$response\.#'
