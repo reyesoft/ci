@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.0.0] - 2024-05-11
 
+### Removed
+- squizlabs/php_codesniffer. This tool is too simliar to cs-fixer.
+
 ### Updated
 - friendsofphp/php-cs-fixer to 3.56
 - phpmd/phpmd to ^2.15
