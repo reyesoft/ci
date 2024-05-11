@@ -78,9 +78,12 @@ echo PHP_EOL .
 $error = false;
 function evaluateOrWarn(string $filepattern, string $element): void {
     global $error, $config;
+
+    $element_value = intval($config['thresholds'][$filepattern]['_'.$element] ?? 1);
+    $element_value = $element_value >= 1 ? $element_value : 1;
     $config['thresholds'][$filepattern]['_'.$element.'_percentage'] = intval(
             intval($config['thresholds'][$filepattern]['_c_'.$element] ?? 0)
-            / intval($config['thresholds'][$filepattern]['_'.$element] ?? 1)
+            / $element_value
             * 10000) / 100;
     if (
         $config['thresholds'][$filepattern][$element] &&

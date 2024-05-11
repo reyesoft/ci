@@ -90,3 +90,20 @@ composer require-dev reyesoft/ci
 ```
 
 `yarn fix` for various projects: `ng lint project1 --fix && ng lint project2 --fix && yarn prettier:fix`
+
+## Testing
+
+### PHP 8.0
+
+```bash
+docker run -d -v `pwd`:/app --name=php80 -it --rm php:8.0-cli
+docker exec -it -w /app php80 bash
+# docker stop php80
+```
+
+### PHP 7.4
+
+```bash
+docker run -d -v `pwd`:/app --name=php74 -it --rm php:7.4-cli
+docker exec -it -w /app php74 bash
+```

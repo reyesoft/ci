@@ -22,18 +22,21 @@ return (new PhpCsFixer\Config())
         'backtick_to_shell_exec' => true,
         'multiline_comment_opening_closing' => true,
         'escape_implicit_backslashes' => true,
-        'braces' => ['allow_single_line_closure' => true],
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
         'yoda_style' => false,
-        'class_attributes_separation' => ['elements' => [ 'method' => 'one']],
+        'class_attributes_separation' => ['elements' => ['method' => 'one']],
         'explicit_indirect_variable' => true,
         'phpdoc_align' => ['align' => 'left'],
         'linebreak_after_opening_tag' => true,
         'no_alternative_syntax' => true,
         'date_time_immutable' => true,  // ver implicancias de este cambio
         'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'modernize_types_casting' => false,
+        'no_unset_on_property' => false,    // set model property=null is sent to DB
+        'psr_autoloading' => true,
+        'phpdoc_order' => true,
 
         /* PHP 7.0 */
         '@PHP70Migration' => true,
@@ -41,6 +44,11 @@ return (new PhpCsFixer\Config())
         '@PHP71Migration' => true,
         '@PHP71Migration:risky' => true,
         '@PHP73Migration' => true,
+        '@PHP74Migration' => true,
+        '@PHP74Migration:risky' => true,
+        '@PHP80Migration' => true,
+        '@PHP80Migration:risky' => true,
+        '@PHPUnit84Migration:risky' => true,
 
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
@@ -48,12 +56,23 @@ return (new PhpCsFixer\Config())
         'single_line_throw' => false,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'phpdoc_add_missing_param_annotation' => false,
+        'use_arrow_functions' => false,
 
         // disable fix php docs on single line like /** @var XXX $xxx */
         'phpdoc_to_comment' => false,
 
         'php_unit_test_case_static_method_calls' => ['call_type' => 'this'],
 
+        'blank_line_before_statement' => [
+            'statements' => [
+                // 'break',
+                'continue',
+                'declare',
+                'return',
+                'throw',
+                'try',
+            ],
+        ],
         'ordered_class_elements' => [
             'order' => [
                 'use_trait',
@@ -82,7 +101,7 @@ return (new PhpCsFixer\Config())
                 "This file is part of ".($project_name ? $project_name.'. '.$project_name : 'Reyesoft project and').
                 " can not be copied and/or\n".
                 "distributed without the express permission of Reyesoft",
-            'commentType' => 'PHPDoc',
+            'comment_type' => 'PHPDoc',
             'location' => 'after_open',
             'separate' => 'bottom'
         ],

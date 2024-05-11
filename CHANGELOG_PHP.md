@@ -28,6 +28,49 @@ return (new PhpCsFixer\Config())
 ´´´
 2. Remove doube-spaces from parallel.bash on composer.json
 
+## [1.4.6] - 2023-05-15
+
+### Updated
+- php/rules/php-cs-fixer.dist added rules that were used in several projects.
+- composer.json upgraded.
+
+## [1.4.5] - 2022-01-25
+
+### Updated
+- friendsofphp/php-cs-fixer to 3.4.0
+- phpmd/phpmd" : "^2.11.1
+- phpstan/phpstan to 1.4.2" ,
+- phpstan/phpstan-strict-rules to 1.1.0
+- phpstan/phpstan-phpunit to 1.0.0
+- sebastian/phpcpd to 6.0.3
+- squizlabs/php_codesniffer to 3.6.2
+- phpunit/phpunit to 9.5.4
+
+## [1.4.4] - 2021-08-15
+
+### Changed
+- All required packages updated.
+
+## [1.4.3] - 2021-06-01
+
+### Added
+- cs-fixer `@PHP74Migration:risky` and `@PHP80Migration:risky` can be applied.
+
+### Changed
+- friendsofphp/php-cs-fixer. Do `PHP_CS_FIXER_FUTURE_MODE=1 php-cs-fixer fix` and prepare for cs-fixer v3.
+- BREAK CHANGE: psr_autoloading is true now, will be change class names.
+- BREAK CHANGE: psr_autoloading is true now, will be change class names.
+
+## [1.4.2] - 2021-05-15
+
+### Fixed
+- coverage-check fix when warning don't exist or is equal to zero.
+
+## [1.4.1]
+
+### Changed
+- squizlabs/php_codesniffer version bump.
+
 ## [1.4.0] - 2021-04-06
 
 ### Updated
