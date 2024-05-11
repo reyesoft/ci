@@ -27,7 +27,7 @@
         "phpunit/phpunit": "^9.0"
     },
     "suggest": {
-        "nunomaduro/larastan": "0.5.0"
+        "larastan/larastan": "2.9.6"
     },
     "extra": {
         "coverage": {
