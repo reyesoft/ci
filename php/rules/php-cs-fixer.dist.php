@@ -16,7 +16,11 @@ return (new PhpCsFixer\Config())
         // '@PSR2' => true, // cool, but add break lines on every fucntion with 1+ params
         '@PHPUnit60Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
-        // 'general_phpdoc_annotation_remove' => ['expected_exception', 'expected_exception_eessage', 'expected_exception_message_reg_exp'],
+        'general_phpdoc_annotation_remove' => [
+            'annotations' => [
+                'expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'
+            ],
+        ],
         'no_useless_return' => true,
         'simplified_null_return' => true,
         'backtick_to_shell_exec' => true,
@@ -91,7 +95,7 @@ return (new PhpCsFixer\Config())
                 'method_protected',
                 'method_private'
                 */
-            ]
+            ],
         ],
 
         'header_comment' => [
