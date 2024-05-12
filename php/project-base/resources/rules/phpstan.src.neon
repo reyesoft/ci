@@ -4,8 +4,8 @@ includes:
 	- ../../vendor/larastan/larastan/extension.neon
 
 parameters:
-    bootstrapFiles:
-        - %rootDir%/../../larastan/larastan/bootstrap.php
+    # bootstrapFiles:
+    #     - %rootDir%/../../larastan/larastan/bootstrap.php
     paths:
         - ../../app
         - ../../bootstrap/*.php
