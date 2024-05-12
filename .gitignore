@@ -2,7 +2,7 @@
 
 
 # reyesoft projects
-.php_cs.cache
+.php-cs-fixer.cache
 
 
 # Created by https://www.gitignore.io/api/linux,laravel,netbeans,kdevelop4,phpstorm+all,phpcodesniffer,visualstudiocode,composer

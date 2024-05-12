@@ -7,7 +7,9 @@
 
     <rule ref="../../../../../reyesoft/ci/php/rules/phpmd.dist.xml">
         <!-- problem with preg_replace and $matches parameter -->
-        <exclude name="UndefinedVariable" />
+        <!-- <exclude name="UndefinedVariable" /> -->
+        <exclude name="LongClassName" />
+        <exclude name="ShortClassName" />
     </rule>
 
 </ruleset>

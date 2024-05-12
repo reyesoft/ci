@@ -1,9 +1,11 @@
 includes:
     # disable next line with laravel, check accepted rules on saldo project
 	- ../../vendor/phpstan/phpstan-strict-rules/rules.neon
-	- ../../vendor/nunomaduro/larastan/extension.neon
+	- ../../vendor/larastan/larastan/extension.neon
 
 parameters:
+    # bootstrapFiles:
+    #     - %rootDir%/../../larastan/larastan/bootstrap.php
     paths:
         - ../../app
         - ../../bootstrap/*.php

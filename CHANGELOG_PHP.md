@@ -4,6 +4,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2024-05-11
+
+### Removed
+- squizlabs/php_codesniffer. This tool is too simliar to cs-fixer.
+- phpcpd. This tool no longer active. Also, don't prevente any heavy problem.
+
+### Updated
+- friendsofphp/php-cs-fixer to 3.56
+- phpmd/phpmd to ^2.15
+- phpstan/phpstan to ^1.1
+
+1. Update php-cs-fixer.php is required from
+´´´
+return $config
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+´´´
+to
+´´´
+return (new PhpCsFixer\Config())
+    ->setFinder(
+        (new PhpCsFixer\Finder())
+´´´
+2. Remove doube-spaces from parallel.bash on composer.json
+
 ## [1.4.6] - 2023-05-15
 
 ### Updated
