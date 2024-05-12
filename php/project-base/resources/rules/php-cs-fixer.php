@@ -13,11 +13,11 @@ $rules = array_merge(
 return $config
     ->setRules($rules)
     ->setFinder(
-        PhpCsFixer\Finder::create()
-        ->in('./app')
-        ->notPath('./bootstrap/*.php')
-        ->in('./config')
-        ->in('./database')
-        ->in('./routes')
-        ->in('./tests')
+        (new PhpCsFixer\Finder())
+            ->in('./app')
+            ->notPath('./bootstrap/*.php')
+            ->in('./config')
+            ->in('./database')
+            ->in('./routes')
+            ->in('./tests')
     );
