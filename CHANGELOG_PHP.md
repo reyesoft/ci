@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - squizlabs/php_codesniffer. This tool is too simliar to cs-fixer.
+- phpcpd. This tool no longer active. Also, don't prevente any heavy problem.
 
 ### Updated
 - friendsofphp/php-cs-fixer to 3.56
