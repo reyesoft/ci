@@ -109,6 +109,7 @@ return (new PhpCsFixer\Config())
             'location' => 'after_open',
             'separate' => 'bottom'
         ],
+        'blank_line_after_opening_tag' => false,
     ])
     ->setCacheFile('resources/.tmp/.php_cs.cache')
     ;
