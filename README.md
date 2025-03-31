@@ -93,17 +93,10 @@ composer require-dev reyesoft/ci
 
 ## Testing
 
-### PHP 8.0
+### PHP 8.2
 
 ```bash
-docker run -d -v `pwd`:/app --name=php80 -it --rm php:8.0-cli
-docker exec -it -w /app php80 bash
+docker run -d -v `pwd`:/app --name=php82 -it --rm php:8.0-cli
+docker exec -it -w /app php82 bash
 # docker stop php80
-```
-
-### PHP 7.4
-
-```bash
-docker run -d -v `pwd`:/app --name=php74 -it --rm php:7.4-cli
-docker exec -it -w /app php74 bash
 ```

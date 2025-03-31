@@ -7,6 +7,7 @@ $rules = array_merge(
     $config->getRules(),
     [
         // 'strict_comparison' => true,
+        'blank_line_after_opening_tag' => false,
     ]
 );
 
