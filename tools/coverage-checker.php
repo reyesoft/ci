@@ -96,7 +96,7 @@ function evaluateOrWarn(string $filepattern, string $element): void {
 
     if (
         $config['thresholds'][$filepattern][$element] &&
-        (float)$config['thresholds'][$filepattern]['_'.$element.'_percentage'] > (float)$config['thresholds'][$filepattern][$element] * 1.05
+        (float)$config['thresholds'][$filepattern]['_'.$element.'_percentage'] > (float)$config['thresholds'][$filepattern][$element] + 5
     ) {
         echo 'WARN: '.$filepattern.' '.$element.' coverage '.$config['thresholds'][$filepattern]['_'.$element.'_percentage']
             . '; ' .$config['thresholds'][$filepattern][$element].' required. You can increase it.'. PHP_EOL;
