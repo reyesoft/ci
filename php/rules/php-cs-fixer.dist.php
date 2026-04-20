@@ -14,18 +14,32 @@ return (new PhpCsFixer\Config())
         '@PhpCsFixer' => true,
         '@PhpCsFixer:risky' => true,
         // '@PSR2' => true, // cool, but add break lines on every fucntion with 1+ params
-        '@PHPUnit60Migration:risky' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'comment_to_phpdoc' => [
+            'ignored_tags' => [
+                // code coverage don't work with phpdoc, so we need to ignore these tags
+                'codeCoverageIgnoreStart',
+                'codeCoverageIgnoreEnd',
+            ],
+        ],
         'general_phpdoc_annotation_remove' => [
             'annotations' => [
                 'expectedException', 'expectedExceptionMessage', 'expectedExceptionMessageRegExp'
             ],
         ],
+        'method_argument_space' => [
+            'on_multiline' => 'ignore'
+        ],
         'no_useless_return' => true,
         'simplified_null_return' => true,
+        'static_lambda' => false,
+        'string_implicit_backslashes' => true,
+        'trailing_comma_in_multiline' => [
+            'elements' => ['arguments', 'arrays', 'parameters']
+        ],
+        'use_arrow_functions' => true,
         'backtick_to_shell_exec' => true,
         'multiline_comment_opening_closing' => true,
-        'escape_implicit_backslashes' => true,
         'ternary_to_null_coalescing' => true,
         'concat_space' => ['spacing' => 'one'],
         'class_definition' => ['single_line' => true, 'single_item_single_line' => true],
@@ -42,25 +56,12 @@ return (new PhpCsFixer\Config())
         'psr_autoloading' => true,
         'phpdoc_order' => true,
 
-        /* PHP 7.0 */
-        '@PHP70Migration' => true,
-        '@PHP70Migration:risky' => true,
-        '@PHP71Migration' => true,
-        '@PHP71Migration:risky' => true,
-        '@PHP73Migration' => true,
-        '@PHP74Migration' => true,
-        '@PHP74Migration:risky' => true,
-        '@PHP80Migration' => true,
-        '@PHP80Migration:risky' => true,
-        '@PHPUnit84Migration:risky' => true,
-
         'phpdoc_to_return_type' => true,
         'native_function_invocation' => ['include' => []], // count -> \count (added like Symfony:risky)
         'native_constant_invocation' => false, // PHP_EOL -> \PHP_EOL (added like Symfony:risky)
         'single_line_throw' => false,
         'phpdoc_types_order' => ['null_adjustment' => 'always_last', 'sort_algorithm' => 'none'],
         'phpdoc_add_missing_param_annotation' => false,
-        'use_arrow_functions' => false,
 
         // disable fix php docs on single line like /** @var XXX $xxx */
         'phpdoc_to_comment' => false,
